@@ -1,0 +1,14 @@
+# Arquivos objeto
+*.o
+
+# Executáveis
+programa
+
+# Diretório obj
+obj/
+
+# Arquivos temporários
+*~
+
+# Arquivos de backup
+*.bak
