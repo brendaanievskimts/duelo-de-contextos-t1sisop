@@ -46,7 +46,7 @@ void experimento_P1(int n)
         wait(NULL);
 
 
-    printf("P1 contador resultado: %lld\n", *contador_global);
+    printf("P1 contador final: %lld\n", *contador_global);
 
 
     shmdt(contador_global);
@@ -98,7 +98,7 @@ void experimento_P2(int n)
     for(int i=0;i<n;i++)
         wait(NULL);
 
-    printf("P2 contador resultado: %lld\n",*contador_global);
+    printf("P2 contador final: %lld\n",*contador_global);
 
     sem_close(semaforo);
 

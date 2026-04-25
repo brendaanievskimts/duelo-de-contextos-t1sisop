@@ -62,7 +62,7 @@ void experimento_T1(int n)
     for(int i=0;i<n;i++)
         pthread_join(threads[i], NULL);
 
-    printf("T1 contador resultado: %lld\n",contador_global);
+    printf("T1 contador final: %lld\n",contador_global);
 }
 
 void experimento_T2(int n)
@@ -89,7 +89,7 @@ void experimento_T2(int n)
     for(int i=0;i<n;i++)
         pthread_join(threads[i], NULL);
 
-    printf("T2 contador resultado: %lld\n", contador_global);
+    printf("T2 contador final: %lld\n", contador_global);
 
     pthread_mutex_destroy(&mutex);
 }
