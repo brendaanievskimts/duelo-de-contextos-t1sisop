@@ -1,20 +1,13 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -std=c99
-TARGET = programa
-SRC_DIR = src
-OBJ_DIR = obj
-SOURCES = $(wildcard $(SRC_DIR)/*.c)
-OBJECTS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SOURCES))
+CC=gcc
+CFLAGS=-Wall -pthread
 
-$(TARGET): $(OBJECTS)
-	$(CC) $(CFLAGS) -o $@ $^
+all: threads processos
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+threads:
+	$(CC) src/threads.c -o threads $(CFLAGS)
 
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+processos:
+	$(CC) src/processos.c -o processos $(CFLAGS)
 
-.PHONY: clean
 clean:
-	rm -rf $(OBJ_DIR) $(TARGET)
+	rm -f threads processos
