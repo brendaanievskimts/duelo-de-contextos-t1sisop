@@ -161,4 +161,9 @@ P2 contador final: 1000000000
 
 ---
 
-# Conclusão(FALTANDO FAZER)
+# Conclusão
+  Este trabalho teve como objetivo comparar o comportamento de threads e processos em um contexto de concorrência, analisando tanto a corrupção de dados quanto a escalabilidade em função do número de workers.
+Os experimentos confirmaram que, na ausência de mecanismos de sincronização, tanto threads quanto processos sofrem com condições de corrida. O contador de T1/P1, que deveria atingir 1 bilhão, apresentou valores significativamente menores em todos os cenários - chegando a aproximadamente 228 milhões com 8 workers - evidenciando que o paralelismo real, viabilizado pelos 8 núcleos do hardware utilizado, intensifica os conflitos de acesso à memória compartilhada e agrava a corrupção dos dados.
+  Em relação à escalabilidade, observou-se que o aumento no número de workers reduz o tempo de execução, porém com retornos decrescentes. O ganho mais expressivo ocorreu ao dobrar os workers de 2 para 4, enquanto a transição de 4 para 8 apresentou melhoria marginal, indicando que o programa se aproxima do limite prático de paralelização - fenômeno previsto pela Lei de Amdahl, dado que parte da execução permanece sequencial.
+  A comparação entre threads e processos revelou comportamentos bastante similares em termos de tempo de execução e grau de corrupção. As pequenas variações observadas podem ser atribuídas às diferenças nos mecanismos de criação e troca de contexto: processos possuem espaços de endereçamento independentes e maior overhead de criação, enquanto threads compartilham memória e são mais leves. Apesar disso, no cenário testado, essas diferenças não foram suficientes para produzir resultados expressivamente distintos.
+  Conclui-se que a escolha entre threads e processos deve considerar o contexto da aplicação: threads são mais eficientes em tarefas que exigem compartilhamento de dados, mas exigem atenção redobrada à sincronização para evitar corrupção; processos, por sua vez, oferecem maior isolamento e segurança, sendo mais adequados quando a independência entre as unidades de execução é prioritária.
