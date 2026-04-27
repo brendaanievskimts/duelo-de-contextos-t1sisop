@@ -146,8 +146,10 @@ P2 contador final: 1000000000
 
 ---
 
-# Analise de Corrupção(FALTANDO FAZER)
-Ao analisarmos os valores de 
+# Analise de Corrupção
+
+  Ao analisarmos os valores de T1 e P1, observamos que o valor final do contador ficou abaixo de 1 bilhão em todos os casos, variando de aproximadamente 500 milhões (com 2 workers) até cerca de 228 milhões (com 8 workers). Isso ocorre devido às condições de corrida, pois múltiplas threads ou processos acessam e modificam a mesma variável sem utilizar mecanismos de sincronização. Como a operação de incremento não é atômica, há perda de atualizações durante a execução. Além disso, a utilização de um hardware com 8 núcleos possibilitou uma execução paralela mais efetiva, aumentando a concorrência e, consequentemente, o número de conflitos, o que intensificou a corrupção do valor final do contador.
+  
 ---
 
 # Grafico de Escalabilidade
@@ -157,5 +159,6 @@ Ao analisarmos os valores de
 <img width="927" height="421" alt="image" src="https://github.com/user-attachments/assets/95d420a7-f844-40c1-9211-24757f83bdc4" />
 (Comparação de tempo de execução via Google Sheets.)
 
+---
 
 # Conclusão(FALTANDO FAZER)
